@@ -3,6 +3,10 @@ package com.sample.utils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
+/**
+ * 文件后缀名对应的文件类型 MIME
+ */
 public class MIMEUtils {
 	private static Properties p;
 	static 

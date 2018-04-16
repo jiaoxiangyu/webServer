@@ -1,18 +1,16 @@
 package com.sample.http;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
+import com.sample.annontation.ServletMapping;
 import com.sample.utils.ConfigUtils;
 import com.sample.utils.ServletMappingUtils;
+
 public class HttpRequestImpl  implements HttpRequest{
 	//客户端的Socket
 	private Socket s;
@@ -36,8 +34,8 @@ public class HttpRequestImpl  implements HttpRequest{
 			//解析第一行
 			String str;
 			str=br.readLine();//readLine使用回车换行判断一行是否结束
-			if(str==null)
-			{
+			System.out.println("Http:"+str);
+			if(str==null) {
 				isNullRequest=true;
 				return;
 			}
@@ -48,35 +46,57 @@ public class HttpRequestImpl  implements HttpRequest{
 	        //首先应该明确br.readLine()的内容，当为true是对应的情况
 	        //也就是说当“”（中间没有空格）与br.readLine()相等时，就进入到while中
             while(!"".equals((header=br.readLine()))){
+				System.out.println("Http:"+header);
             	parseRequestHeader(header);
 			}
-		//post和get
-		if(br.ready())//post//POST提交方式判断，如果还有下一行就继续读取信息
-		{
-			char[] buf=new char[1024];
-			int len=br.read(buf);//使用字节进行读取，因为这一行没有回车换行，readLine无法判断是否结束
-			String parameter=new String(buf,0,len);
-			parseRequestParamByPost(parameter);//调用自己创建在本类里边的方法处理POST方式提交的正文信息	
-		}
-		else
-		{//get,get参数的位置在第一行连接处
-			parseRequestParamByGet(requestPath);//调用自己创建在本类里边的方法处理GET方式提交的正文信息	
-		}
+			//post和get
+			if(br.ready()){//POST提交方式判断，如果还有下一行就继续读取信息
+				char[] buf=new char[1024];
+				int len=br.read(buf);//使用字节进行读取，因为这一行没有回车换行，readLine无法判断是否结束
+				String parameter=new String(buf,0,len);
+				System.out.println("Http:"+parameter);
+				parseRequestParamByPost(parameter);//调用自己创建在本类里边的方法处理POST方式提交的正文信息
+			} else {//get,get参数的位置在第一行连接处
+				parseRequestParamByGet(requestPath);//调用自己创建在本类里边的方法处理GET方式提交的正文信息
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
+	//解析第一行  请求方法、路径、协议
+	private void parseRequestMethodPathProtocol(String str) throws Exception {
+		String[] protocolMethodPath=new String[3];//由于第一行含有三个内容，分割后需要三个String存储
+		protocolMethodPath=str.split(" ");//使用空格分割
+		if(protocolMethodPath.length==3) {
+			requestMethod=protocolMethodPath[0];
+			requestPath=protocolMethodPath[1];
+			protocol=protocolMethodPath[2];
+		} else {
+			throw new Exception("首行参数不合适，请重新提交");
+		}
+	}
+
+	//解析第二行到第八行
+	private void parseRequestHeader(String header)  throws Exception{
+		String[]  headHost=header.split(": ");
+		if(headHost.length!=2){
+			throw new Exception("消息报头异常，请重新提交");
+		}
+		hmHeader.put(headHost[0],headHost[1]);
+	}
+
     //GET方法处理
     private void parseRequestParamByGet(String requestPath2) {
-		String []str1=requestPath2.split("[?]");//使用“？”分割字符串
-		if(str1.length==2)
-		{
+		String[] str1=requestPath2.split("[?]");//使用“？”分割字符串
+		if(str1.length==2) {
 				parseRequestParamByPost(str1[1]);
 		}
 		this.requestPath=str1[0];
 	}
     //POST方法处理
     private void parseRequestParamByPost(String parameter)  {
+		System.out.println("param:"+parameter);
 		 String[] strs=parameter.split("&");
 		 if(strs.length>=1)
 		 {
@@ -87,29 +107,8 @@ public class HttpRequestImpl  implements HttpRequest{
 			 }
 		 }
 	}
-	//解析第二行到第八行
-	private void parseRequestHeader(String header)  throws Exception{
-		String[]  headHost=header.split(": ");
-		 if(headHost.length!=2){
-			 throw new Exception("消息报头异常，请重新提交");		 
-		 }
-		 hmHeader.put(headHost[0],headHost[1]);
-	}
-	//解析第一行
-	private void parseRequestMethodPathProtocol(String str) throws Exception {
-		 String[] protocolMethodPath=new String[3];//由于第一行含有三个内容，分割后需要三个String存储
-		 protocolMethodPath=str.split(" ");//使用空格分割
-		 if(protocolMethodPath.length==3)
-		 {
-		 requestMethod=protocolMethodPath[0];
-		 requestPath=protocolMethodPath[1];
-		 protocol=protocolMethodPath[2];
-		 }
-		 else
-		 {
-			 throw new Exception("首行参数不合适，请重新提交");
-		 }
-	}
+
+
 	//获得请求的协议
 	public String getProtocol()
 	{
@@ -144,13 +143,12 @@ public class HttpRequestImpl  implements HttpRequest{
     }
 	   // 判断当前请求的否是动态资源
     public boolean isDynamicResource() {
-        // 存在？？文件？？动态？？
         System.out.println("进入isDynamicResource()方法");
-        String path = ServletMappingUtils.getMappingValue(requestPath);
-        /*
-         * //使用路径判断，当时我不知道还有一个叫做isContains(key)的方法，如果知道的话 就可以使用了，请参见测试类
-         * if(isContainers(requestPath())) { return *; }
-         */
+		//方法一：通过properties文件读取
+        //String path = ServletMappingUtils.getMappingValue(requestPath);
+		//方法二：通过注解获得map
+		String path = ServletMapping.getServletMapping().get(requestPath);
+
         System.out.println("ServletMapping中根据requestPath获取的映射：" + path);
         if (path != null) {
             return true;

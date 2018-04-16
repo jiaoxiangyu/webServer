@@ -1,6 +1,9 @@
 package com.sample.http;
 
-//负责创建http协议访问过程中使用到的对象
+/**
+ * 负责创建http协议访问过程中使用到的对象
+ */
+
 public interface HttpCreator {
 	//返回创建好的request对象
 	public HttpRequest getHttpRequest();

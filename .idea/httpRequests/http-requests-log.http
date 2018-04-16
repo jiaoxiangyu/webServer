@@ -1,0 +1,356 @@
+GET http://localhost:10002/hello?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-16T085028.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110620-1.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110620.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110619-4.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110619-3.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110619-2.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110619-1.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110619.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110618-2.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110618-1.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110618.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110617.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110356.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110315-1.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110315.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110314-3.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110314-2.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110314-1.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110314.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-15T110309.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/404.html
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/404.html
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/404.html
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/404.html
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/404.html
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/404.html
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-14T073103.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-13T084832.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/404.html
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/404.html
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/404.html
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/404.html
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/404.html
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/404.html
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/404.html
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-13T084728.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-13T054350-1.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-13T054350.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-13T054349-1.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-13T054349.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-13T053932.200.txt
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:10002/HelloWorld?name=jiao
+Accept: */*
+Cache-Control: no-cache
+
+###
+

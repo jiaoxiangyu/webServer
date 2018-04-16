@@ -1,5 +1,8 @@
 package com.sample.http;
 
+import com.sample.annontation.ServletMapping;
+import com.sample.pool.Factory;
+import com.sample.pool.ServletPool;
 import com.sample.servlet.Servlet;
 import com.sample.utils.ErrorPageUtils;
 import com.sample.utils.MIMEUtils;
@@ -34,34 +37,38 @@ public class  HttpAccessProcessorImpl implements HttpAccessProcessor  {
 		response.printResponseHeader();
         Class className=null;
 		try {
-			String path=ServletMappingUtils.getMappingValue(request.getRequestPath());
+			//String path=ServletMappingUtils.getMappingValue(request.getRequestPath());
+			String path= ServletMapping.getServletMapping().get(request.getRequestPath());
 			System.out.println("使用反射获取的servlet路径："+path);
-			className = (Class.forName(path));
-			//ServletImpl  servlet= (ServletImpl) className.newInstance();
-			Servlet servlet = (Servlet) className.newInstance();
-			System.out.println(servlet);
-			servlet.service(request, response);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
+			if (path==null){
+				sendError(404,request,response);
+			}else {
+				//className = (Class.forName(path));
+				//ServletImpl  servlet= (ServletImpl) className.newInstance();
+				Factory<Servlet> factory=ServletPool.getObjectPool().getObject(path);
+				Servlet servlet = (Servlet)factory.getObject();
+				System.out.println(servlet);
+				servlet.service(request, response);
+				ServletPool.getObjectPool().release(factory);
+			}
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}	
 	//向浏览器返回错误信息及其页面
 	public void sendError(int statusCode,HttpRequest request,HttpResponse response)
 	{
-		  System.out.println("进入sendError()");
-			//获取请求中资源，并处理
-			//response.setStatusLine("OK");
-			response.setStatusLine(statusCode);
-			//response.setStatusLine("OK");
-			response.setContentType("text/html");
-			response.setCRLF();
-			response.printResponseHeader();
-			//response.printResponseContent("/error/404.html");
-			response.printResponseContent(ErrorPageUtils.getErrorPage(statusCode+""));
+		System.out.println("进入sendError()");
+		//获取请求中资源，并处理
+		//response.setStatusLine("OK");
+		response.setStatusLine(statusCode);
+		//response.setStatusLine("OK");
+		response.setContentType("text/html");
+		response.setCRLF();
+		response.printResponseHeader();
+		//response.printResponseContent("/error/404.html");
+		response.printResponseContent(ErrorPageUtils.getErrorPage(String.valueOf(statusCode)));
 		  
 	}
 	
